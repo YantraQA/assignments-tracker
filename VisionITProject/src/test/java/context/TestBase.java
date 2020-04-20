@@ -7,12 +7,13 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 import java.io.InputStream;
-public class TestBaseAPI {
+public class TestBase {
 	protected String server = LoadProperties().getProperty("url");
 	protected String accessToken = LoadProperties().getProperty("token");
-	
+	protected String server_ui = LoadProperties().getProperty("url_ui");
 	protected static RequestSpecification req_spec = null;
 	protected static Response resp = null;
+	
 	public Properties LoadProperties() {
 		try {
 		InputStream inStream = getClass().getClassLoader().getResourceAsStream("config.properties");

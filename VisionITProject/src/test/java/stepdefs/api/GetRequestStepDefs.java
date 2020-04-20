@@ -6,15 +6,17 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.everyItem;
 import static org.hamcrest.Matchers.not;
 
-import context.TestBaseAPI;
+import context.TestBase;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 
-public class GetRequestStepdefs extends TestBaseAPI {
+public class GetRequestStepdefs extends TestBase {
 	
 	//RequestSpecification req_spec = null;
 	//Response resp = null;	

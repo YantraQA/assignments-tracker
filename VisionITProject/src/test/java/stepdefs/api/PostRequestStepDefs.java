@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import org.junit.Assert;
 
-import context.TestBaseAPI;
+import context.TestBase;
 
 import static org.hamcrest.Matchers.equalTo;
 import static io.restassured.RestAssured.given;
@@ -15,7 +15,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
 
-public class PostRequestStepdefs extends TestBaseAPI {
+public class PostRequestStepdefs extends TestBase {
 	
 	TestContext testContext;
 	

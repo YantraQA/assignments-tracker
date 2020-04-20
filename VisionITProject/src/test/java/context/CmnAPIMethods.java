@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 
-public class CmnAPIMethods extends TestBaseAPI{
+public class CmnAPIMethods extends TestBase{
 	
 	public String createNewUserInGoRestAPI() {
 		//Get Random String for Email

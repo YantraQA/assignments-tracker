@@ -2,10 +2,10 @@ package stepdefs.api;
 
 import java.util.HashMap;
 
-import context.TestBaseAPI;
+import context.TestBase;
 import cucumber.api.java.en.When;
 
-public class PatchRequestStepdefs extends TestBaseAPI {
+public class PatchRequestStepdefs extends TestBase {
 	TestContext testContext;
 	
 	public PatchRequestStepdefs(TestContext testContext) {

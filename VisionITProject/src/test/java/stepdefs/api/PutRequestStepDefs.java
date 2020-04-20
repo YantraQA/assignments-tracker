@@ -6,7 +6,7 @@ import static io.restassured.RestAssured.given;
 import java.util.HashMap;
 
 import context.CmnAPIMethods;
-import context.TestBaseAPI;
+import context.TestBase;
 import cucumber.api.Scenario;
 import static org.hamcrest.Matchers.emptyArray;
 import cucumber.api.java.Before;
@@ -15,7 +15,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
 
-public class PutRequestStepdefs extends TestBaseAPI {
+public class PutRequestStepdefs extends TestBase {
 
 	String email = GetRandomString(10) + "@gmail.com";
 	TestContext testContext;

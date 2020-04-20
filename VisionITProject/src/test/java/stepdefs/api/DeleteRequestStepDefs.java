@@ -2,12 +2,12 @@ package stepdefs.api;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-import context.TestBaseAPI;
+import context.TestBase;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
 
-public class DeleteRequestStepdefs extends TestBaseAPI {
+public class DeleteRequestStepdefs extends TestBase {
 	
 	String email = GetRandomString(10) + "gmail.com";
 	
