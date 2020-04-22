@@ -1,5 +1,5 @@
 @tag 
-Feature: Health Check Script for CSCart App
+Feature: Health Check Script for CSCart App 1
 	I will navigate the app till search
 	
 @tag1
