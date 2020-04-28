@@ -1,4 +1,4 @@
-package CollectionExamples;
+package collectionExamples;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -93,8 +93,8 @@ public class ArrayListExample
 
 	}
 }
-	//output-
-	/*Aditi
+//output-
+/*Aditi
 	Neha
 	Aditi
 	rahul
