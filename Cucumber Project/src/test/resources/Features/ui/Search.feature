@@ -1,9 +1,8 @@
+  @ui
+Feature: Laptop Search in amazon with Findelements
 
-Feature: Search functionality
-
-  @tag1
-  Scenario: Search a product
-  	Given I have browser opened and url is navigated
-  	When I search for product "Dell" 
-  	Then product list should appear pertaining to the product search as "Dell"
-    
+  Scenario: By findelements search
+    Given I open browser
+    When Send key "Dell"
+    Then I get List of "Dell"
+  
