@@ -23,9 +23,9 @@ import utils.api.Testbase;
 
 public class GetRequestStepDefs extends Testbase
 {
-	TestContext testContext;
+	TestContextAPI testContext;
 	
-	public GetRequestStepDefs(TestContext testContext)
+	public GetRequestStepDefs(TestContextAPI testContext)
 	{
 		this.testContext = testContext;
 	}

@@ -5,7 +5,6 @@ import static org.hamcrest.Matchers.emptyArray;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
 
-
 import cucumber.api.Scenario;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
@@ -16,8 +15,8 @@ import utils.api.Testbase;
 
 public class DeleteRequestStepDefs extends Testbase
 {
-	TestContext testContext;
-	public DeleteRequestStepDefs(TestContext testcontext)
+	TestContextAPI testContext;
+	public DeleteRequestStepDefs(TestContextAPI testcontext)
 	{
 		this.testContext=testContext;
 	}

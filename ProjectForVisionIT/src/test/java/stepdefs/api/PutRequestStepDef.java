@@ -19,8 +19,8 @@ import utils.api.Testbase;
 
 public class PutRequestStepDef extends Testbase
 {
-	TestContext testContext;
-	public PutRequestStepDef(TestContext testContext)
+	TestContextAPI testContext;
+	public PutRequestStepDef(TestContextAPI testContext)
 	{
 		this.testContext=testContext;
 	}

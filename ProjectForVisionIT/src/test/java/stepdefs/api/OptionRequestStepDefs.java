@@ -18,8 +18,8 @@ import utils.api.Testbase;
 
 public class OptionRequestStepDefs extends Testbase 
 {
-	TestContext testContext;
-	public OptionRequestStepDefs(TestContext testContext)
+	TestContextAPI testContext;
+	public OptionRequestStepDefs(TestContextAPI testContext)
 	{
 		this.testContext=testContext;
 	}

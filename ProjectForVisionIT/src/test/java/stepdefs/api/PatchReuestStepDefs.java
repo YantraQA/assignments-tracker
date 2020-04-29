@@ -10,8 +10,8 @@ import utils.api.Testbase;
 
 public class PatchReuestStepDefs extends Testbase
 {
-	TestContext tesContext;
-	public PatchReuestStepDefs(TestContext testContext)
+	TestContextAPI tesContext;
+	public PatchReuestStepDefs(TestContextAPI testContext)
 	{
 		this.tesContext = testContext;
 	}
@@ -34,7 +34,7 @@ public class PatchReuestStepDefs extends Testbase
 								"}";
 			tesContext.scn.write("body sent as:" + body_string);
 			tesContext.req_spec.headers(hm_header).body(body_string);
-			tesContext.scn.write("End Point:" + "/public-api/users/" + newUserID);
+			tesContext.scn.write("End Point:" + "/public-api/users/" + email);
 			tesContext.resp=tesContext.req_spec.when().relaxedHTTPSValidation().put("/public-api/users/" + tesContext.newUserID);
 			tesContext.scn.write("Response Patch Request:" + tesContext.resp.asString());
 			

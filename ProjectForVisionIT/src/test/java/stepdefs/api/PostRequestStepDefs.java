@@ -20,8 +20,8 @@ import io.restassured.response.Response;
 
 public class PostRequestStepDefs extends utils.api.Testbase 
 {
-	TestContext testContext;
-	public PostRequestStepDefs(TestContext testContext)
+	TestContextAPI testContext;
+	public PostRequestStepDefs(TestContextAPI testContext)
 	{
 		this.testContext=testContext;
 	}
