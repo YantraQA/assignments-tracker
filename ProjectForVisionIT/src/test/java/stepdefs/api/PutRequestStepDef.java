@@ -7,6 +7,7 @@ import static org.hamcrest.Matchers.not;
 
 import java.util.HashMap;
 
+import contexts.Testbase;
 import cucumber.api.Scenario;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -14,7 +15,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
 import utils.api.CmnApiMethods;
-import utils.api.Testbase;
 
 
 public class PutRequestStepDef extends Testbase

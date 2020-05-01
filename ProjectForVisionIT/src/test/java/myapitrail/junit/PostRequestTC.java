@@ -1,12 +1,14 @@
 package myapitrail.junit;
 
 import org.junit.Test;
+
+import contexts.Testbase;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 import java.util.HashMap;
 import io.restassured.response.Response;
-import utils.api.Testbase;
 
 public class PostRequestTC extends Testbase
 {

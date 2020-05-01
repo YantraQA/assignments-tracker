@@ -9,8 +9,9 @@ import java.util.Properties;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import contexts.Testbase;
 import io.restassured.response.Response;
-import utils.api.Testbase;
 
 
 public class GetRequestTC extends Testbase

@@ -9,10 +9,10 @@ import java.util.Random;
 
 import org.junit.Test;
 
+import contexts.Testbase;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
-import utils.api.Testbase;
 
 public class FirstWeekAssigment extends Testbase
 {

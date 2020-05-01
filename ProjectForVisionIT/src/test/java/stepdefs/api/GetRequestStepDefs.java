@@ -8,6 +8,7 @@ import static org.hamcrest.Matchers.not;
 import org.hamcrest.Matcher;
 import org.junit.Test;
 
+import contexts.Testbase;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -18,7 +19,6 @@ import io.restassured.matcher.ResponseAwareMatcher;
 import static org.hamcrest.Matchers.*;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import utils.api.Testbase;
 
 
 public class GetRequestStepDefs extends Testbase

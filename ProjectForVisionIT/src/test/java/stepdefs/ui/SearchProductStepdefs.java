@@ -13,6 +13,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import com.sun.tools.xjc.Driver;
 
 import contexts.TestContextUI;
+import contexts.Testbase;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.AfterStep;
@@ -23,7 +24,8 @@ import cucumber.api.java.en.When;
 import junit.framework.Assert;
 import pageObjects.CommonPageObject;
 import pageObjects.SearchPageObject;
-import utils.api.Testbase;
+import utils.manager.driver.factory.DriverFactory;
+import utils.manager.driver.factory.DriverManager;
 
 public class SearchProductStepdefs extends Testbase
 {
@@ -36,8 +38,8 @@ public class SearchProductStepdefs extends Testbase
 		this.testContextUI=testContextUI;
 	}
 	
-	@Given("I have browser open and url is navigated")
-	public void i_have_browser_open_and_url_is_navigated() 
+	@Given("I have browser opened and url is navigated")
+	public void i_have_browser_open_and_url_is_navigated() throws Exception 
 	{
 	   /*Various way to invoking the web driver*/
 		/*Method:-1*/
@@ -45,7 +47,7 @@ public class SearchProductStepdefs extends Testbase
 		DriverManager driverManager = DriverFactory.getDriverManager("chrome");
 		WebDriver driver = driverManager.getDriver();
 		driverManager.maximizeBrowser();
-		driverManager.navigateToDriver(serverUI);
+		driverManager.navigetToDriver(serverUI);
 		
 		/*Method:-2*/
 	  /* WebDriver driver = new ChromeDriver();
@@ -78,7 +80,7 @@ public class SearchProductStepdefs extends Testbase
 		scn.write("Search was successfully done");
 	}
 
-	@Then("Product list should appear pertaining to the product search as {string}")
+	@Then("product list should appear pertaining to the product search as {string}")
 	public void product_list_should_appear_pertaining_to_the_product_search_as(String productName)
 	{
 		testContextUI.getSearchPageObjects().validateProductList(productName);

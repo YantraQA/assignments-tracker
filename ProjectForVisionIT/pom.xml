@@ -15,14 +15,13 @@
 	</properties>
 
 	<profiles>
-
-		<profile>
+	<profile>
 			<id>run-api</id>
 			<properties>
 				<cucumber.options>--tags "@api"</cucumber.options>
 			</properties>
 		</profile>
-
+			
 		<profile>
 			<id>run-ui</id>
 			<properties>

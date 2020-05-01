@@ -2,10 +2,10 @@ package stepdefs.api;
 
 import java.util.HashMap;
 
+import contexts.Testbase;
 import cucumber.api.Scenario;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.When;
-import utils.api.Testbase;
 
 
 public class PatchReuestStepDefs extends Testbase

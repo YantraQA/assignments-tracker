@@ -1,4 +1,4 @@
-package utils.api;
+package contexts;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -17,7 +17,7 @@ public class Testbase
 	// protected static Response resp=null;
 	//protected static String newUserID = null;
 
-	 protected String serverUI = LoadProperties().getProperty("url_ui");
+	protected String serverUI = LoadProperties().getProperty("url_ui");
 	
 	
 	public Properties LoadProperties() 

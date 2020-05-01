@@ -18,7 +18,7 @@ import io.restassured.response.Response;
 
 
 
-public class PostRequestStepDefs extends utils.api.Testbase 
+public class PostRequestStepDefs extends contexts.Testbase 
 {
 	TestContextAPI testContext;
 	public PostRequestStepDefs(TestContextAPI testContext)

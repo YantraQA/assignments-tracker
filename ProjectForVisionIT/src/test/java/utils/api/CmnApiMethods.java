@@ -6,6 +6,7 @@ import static org.hamcrest.Matchers.not;
 
 import java.util.HashMap;
 
+import contexts.Testbase;
 import io.restassured.response.Response;
 
 public class CmnApiMethods extends Testbase 

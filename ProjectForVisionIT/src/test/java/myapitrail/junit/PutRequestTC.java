@@ -10,8 +10,8 @@ import java.util.Random;
 
 import org.junit.Test;
 
+import contexts.Testbase;
 import io.restassured.response.Response;
-import utils.api.Testbase;
 
 public class PutRequestTC extends Testbase 
 {
