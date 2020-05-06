@@ -8,8 +8,9 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 
-		features="classpath:features",
-		glue="stepdefs",
+		features="classpath:features/ui/HomePage.feature",
+		glue="stepdefs.ui",
+		tags="",
 		plugin = {"pretty",
 				"html:target/html/",
 				"json:target/json/file.json",
@@ -17,9 +18,9 @@ import cucumber.api.junit.Cucumber;
 		},
 		strict=false,
 		dryRun=false
-		
 
 		)
-public class RunTest {
+public class RunTempUI {
 
+	//"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
 }

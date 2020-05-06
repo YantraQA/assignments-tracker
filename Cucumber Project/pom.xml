@@ -1,7 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.visionit</groupId>
-	<artifactId>MyFirstProject</artifactId>
+	<groupId>com.visionit.testing</groupId>
+	<artifactId>Batch8CucumberSeleniumAPI</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
@@ -11,11 +13,40 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
+	<profiles>
 
+		<profile>
+			<id>run-api</id>
+			<properties>
+				<cucumber.options>--tags "@api"</cucumber.options>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>run-ui</id>
+			<properties>
+				<cucumber.options>--tags "@ui"</cucumber.options>
+			</properties>
+		</profile>
+
+	</profiles>
 	<dependencies>
 
+		<!-- For API automation -->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>4.1.2</version>
+			<scope>test</scope>
+		</dependency>
 
-		<!-- For Cucumber -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
@@ -30,31 +61,21 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-
-
 		<!-- For dependency Injection -->
-
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-picocontainer</artifactId>
 			<version>${cucumber.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>3.141.59</version>
 		</dependency>
 
-
-			<!-- For Extent Reports -->
+		<!-- For Extent Reports -->
 		<!-- Extent Report Adapter for Cucumber -->
 		<dependency>
 			<groupId>com.aventstack</groupId>
@@ -83,8 +104,7 @@
 			<artifactId>mongo-java-driver</artifactId>
 			<version>3.10.2</version>
 		</dependency>
-		
-		<!-- for Log4j2 -->
+
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
@@ -96,9 +116,23 @@
 			<version>2.13.1</version>
 		</dependency>
 
-	
+
 	</dependencies>
 
-	
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M1</version>
+				<configuration>
+					<systemPropertyVariables>
+						<cucumber.options>${cucumber.options}</cucumber.options>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<!--<parallel>methods</parallel> <threadCount>4</threadCount> <perCoreThreadCount>false</perCoreThreadCount> 
+		<useUnlimitedThreads>true</useUnlimitedThreads> <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine> -->
 
 </project>

@@ -1,11 +1,10 @@
-package utils;
+package utils.ui;
 
-import java.util.List;
 import java.io.File;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -14,8 +13,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public abstract class Interact 
-{
+import cucumber.api.Scenario;
+
+/**
+ * 
+ * @author akashtyagi
+ * Library created to interact with the elements
+ */
+public abstract class Interact {
 
 	private static final Logger logger = LogManager.getLogger(Interact.class);
 	private WebDriver driver;
@@ -59,6 +64,12 @@ public abstract class Interact
 		return element.findElements(by);
 	}
 	
+	public boolean validateElementIsDisplayed(By by) {
+		boolean b = driver.findElement(by).isDisplayed();
+		logger.info("Element is Displayed status: " + by.toString());
+		return b;
+	}
+	
 	public byte[] takeScreenShot() {
 		TakesScreenshot shot = (TakesScreenshot)driver;
 		logger.info("Screen Shot taken for full driver. ");
@@ -82,5 +93,8 @@ public abstract class Interact
 		logger.info("Screen Shot taken for element and returned as a file. By descp: " + by.toString());
 		return shot.getScreenshotAs(OutputType.FILE);
 	}
-
+	
+	public void takeScreenShotAndAttachInReport(Scenario s) {
+		s.embed(takeScreenShot(), "image/png");
+	}
 }
