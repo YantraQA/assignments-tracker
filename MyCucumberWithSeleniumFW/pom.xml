@@ -10,7 +10,17 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
-
+	
+	<profiles>
+		<profile>
+		 <id>run-AmazonFeatures</id>
+		 	<properties>
+		 	<cucumber.options>--tags "@search"</cucumber.options>
+		 	</properties>
+		</profile>
+		
+	</profiles>
+	
 	<!-- For Cucumber -->
 	<dependencies>
 		<dependency>
@@ -108,16 +118,16 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M1</version>
 				<configuration>
-					<parallel>methods</parallel>
-					<threadCount>4</threadCount>
-					<perCoreThreadCount>false</perCoreThreadCount>
-					<!-- <useUnlimitedThreads>true</useUnlimitedThreads> -->
-					<argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+				<systemPropertyVariables>
+				<cucumber.options>--tags "@search""</cucumber.options>
+				</systemPropertyVariables>	
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 
+<!--<parallel>methods</parallel><threadCount>4</threadCount><perCoreThreadCount>false</perCoreThreadCount>
+<useUnlimitedThreads>true</useUnlimitedThreads> <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>  -->
 	
   
 </project>

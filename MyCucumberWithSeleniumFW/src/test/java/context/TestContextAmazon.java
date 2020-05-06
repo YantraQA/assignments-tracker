@@ -4,12 +4,13 @@ import org.openqa.selenium.WebDriver;
 
 import cucumber.api.Scenario;
 import pageObjects.*;
+import utils.manager.driver.singleton.WebDriverManagerSingleton;
 
 public class TestContextAmazon 
 {
-WebDriver driver;
-CommonPageObjects cmnPageObjects;
-SearchPageObjects SearchPageObjects;
+ private WebDriver driver;
+ private CommonPageObjects cmnPageObjects;
+ private SearchPageObjects SearchPageObjects;
 
 public WebDriver getDriver() {
 	return driver;
@@ -26,8 +27,8 @@ public SearchPageObjects getSearchPageObjects() {
 
 public void initializePageObject(WebDriver driver, Scenario s)
 {
-	cmnPageObjects= new CommonPageObjects(driver,s);
-	 SearchPageObjects=new SearchPageObjects(driver,s);
+	cmnPageObjects= new CommonPageObjects (driver, s);
+	SearchPageObjects=new SearchPageObjects (driver, s);
 
 	
 }

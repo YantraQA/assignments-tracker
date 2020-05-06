@@ -10,7 +10,7 @@ import cucumber.api.junit.Cucumber;
   (
 	features="classpath:AmazonFeatures", //where the AmazonFeatures is located shows that path
 	glue="amazonStefDefs", // where the stefDefs is located shows that path
-	tags="",
+	tags="@search",
 	plugin={"pretty",
 			"html:Amazontarget/html/",
 			"json:Amazontarget/json/file.json",

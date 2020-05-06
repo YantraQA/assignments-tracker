@@ -10,7 +10,7 @@ import java.util.Random;
 public class TestBase 
 {
 		protected String server = LoadProperties().getProperty("url");
-	    protected String accessToken = LoadProperties().getProperty("token");
+	   protected String accessToken = LoadProperties().getProperty("token");
 	    protected String server_amazon=LoadProperties().getProperty("url_ui");// have written this in config file.
 
 		public Properties LoadProperties() {

@@ -1,9 +1,8 @@
-@search
-Feature: Search Functionality
-
- Scenario:Search a product
+ @AmazonFeatures @search
  
- Given I have browser opened and url is navigated
- When I search for product as "Dell"
- Then product list should appear pertaining to product search as "Dell"
+Feature: Search Functionality
+Scenario:Search a product
+ 	Given I have browser opened and url is navigated
+ 	When I search for product as "Dell"
+ 	Then product list should appear pertaining to product search as "Dell"
  
