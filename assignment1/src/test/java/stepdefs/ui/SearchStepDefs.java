@@ -102,4 +102,3 @@ public class SearchStepDefs extends TestBase{
 	}
 	
 }
-
