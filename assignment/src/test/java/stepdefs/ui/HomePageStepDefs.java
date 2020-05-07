@@ -20,7 +20,7 @@ public class HomePageStepDefs {
 
 		for (int i=0;i<list.size();i++) {
 			testContextUI.getCmnPageObjects().validateElementPresentInHeaderSection(list.get(i));	
-		}
+		}//
 
 	}
 }
