@@ -11,6 +11,23 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 	
+	<profiles>
+			<profile>
+				<properties>
+					<id>run-api</id>
+					<cucumber-options>---tags "@api"</cucumber-options>
+				</properties>
+			</profile>
+			
+			<profile>
+				<properties>
+					<id>run-ui</id>
+					<cucumber-options>---tags "@ui"</cucumber-options>
+				</properties>
+			</profile>
+	</profiles>
+	
+	
 	<dependencies>
 	
 	<!-- For API Automation -->
@@ -107,6 +124,9 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M1</version>
 				<configuration>
+					<systemPropertyVariables>
+							<cucumber.options>${cucumber.options}</cucumber.options>
+					</systemPropertyVariables>
 					<parallel>methods</parallel>
 					<threadCount>4</threadCount>
 					<perCoreThreadCount>false</perCoreThreadCount>

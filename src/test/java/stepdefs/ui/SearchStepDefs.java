@@ -10,7 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import context.TestBase;
+//import context.TestBase;
+import context.*;
 import context.TestContextUI;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
@@ -23,13 +24,8 @@ import pageobjects.CmnPageObjects;
 import pageobjects.SearchPageObjects;
 import utils.ui.Interact;
 
-public class SearchStepDefs extends TestBase{
+public class SearchStepDefs extends TestBase {
 
-//	String url = "https://www.amazon.in/";
-//	WebDriver driver = null;
-//	CmnPageObjects cmnPageObjects = null;
-//	SearchPageObjects searchPageObjects = null;
-	
 	TestContextUI testContextUI;
 	Scenario scn;
 	
@@ -44,8 +40,7 @@ public class SearchStepDefs extends TestBase{
 		driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
 		driver.get(serverUI);
 		scn.write("Chrome Driver invoked and URL is navigated as: " + serverUI);
-		
-		//Assign driver and set page Objects to Test Context
+	
 		testContextUI.setDriver(driver);
 		testContextUI.initilaizePageObjectClasses(driver, scn);
 	}
@@ -56,49 +51,18 @@ public class SearchStepDefs extends TestBase{
 		testContextUI.getCmnPageObjects().ClickOnSearchButton();
 		scn.write("Search was successfull");
 		
-	 /*  cmnPageObjects = new CmnPageObjects(driver,scn);
-	   cmnPageObjects.SetSearchTextBox(product);
-	   cmnPageObjects.ClickOnSearchButton(); 
-	   scn.write("Search was successfull"); */
-	   
-	   /*
-	   WebElement searchBox = driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']"));
-	   searchBox.sendKeys(product);
-	   
-	   WebElement searchButton = driver.findElement(By.xpath("//input[@class='nav-input']"));
-	   searchButton.click();
-	   */
 	}
 
 	@Then("Product list should appear pertaining to the product searched as {string}")
 	public void product_list_should_appear_pertaining_to_the_product_searched_as(String productName) {
 			
 		testContextUI.getSearchPageObjects().ValidateProudctList(productName);
-//		searchPageObjects = new SearchStepDefs(driver);
-//		searchPageObjects.ValidateProudctList(productName);		
-//		String descp;
-//		descp = srchPageObjects.getProductText();
-		 
-	    /* if(descp.contains(productName)) {
-	    	Assert.assertTrue(true);
-	    }
-	    else {
-	    	Assert.assertFalse("Product not correctly displayed in the search result", true);
-	    }
-	    */
 	}
 	
 	@Before
 	public void SetUp(Scenario s) {
 		this.scn = s; 
 	}
-	
-	/*@AfterStep
-	public void SetUpAfterEachLine() {
-//		TakesScreenshot scrnShot = (TakesScreenshot)driver;
-//		byte[] data = scrnShot.getScreenshotAs(OutputType.BYTES);
-//		scn.embed(data, "image/png");		
-	} */
 	
 	@After
 	public void CleanUp(Scenario s) {
@@ -108,10 +72,6 @@ public class SearchStepDefs extends TestBase{
 			byte[] data = scrnShot.getScreenshotAs(OutputType.BYTES);
 			scn.embed(data, "image/png");	
 		}
-		
-//		driver.close();	//closes only one tab out of several opened tabs
-//		TakesScreenshot scrnShot = (TakesScreenshot)driver;
-//		byte[] data = scrnShot.getScreenshotAs(OutputType.BYTES);
 		
 		testContextUI.getDriver().quit(); //closes all tabs 
 		scn.write("Browser is closed");

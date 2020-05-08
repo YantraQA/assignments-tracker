@@ -57,6 +57,12 @@ public abstract class Interact {
 		return value;
 	}
 	
+	public boolean ValidateElementIsDisplyed(By by) {
+		boolean b = driver.findElement(by).isDisplayed();
+		logger.info("Element is Displayed Status: " + by.toString());
+		return b;
+	}
+	
 	public List<WebElement> getListOfWebElements(By by){
 		WebDriverWait wait = new WebDriverWait(driver, 60);
 		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
