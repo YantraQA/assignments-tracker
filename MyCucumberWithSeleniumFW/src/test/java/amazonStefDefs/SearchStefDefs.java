@@ -44,7 +44,7 @@ public class SearchStefDefs extends TestBase
 	//CommonPageObjects cmnPageObjects=null;
 	//SearchPageObjects SearchPageObjects=null;
 	
-	@Given("I have browser opened and url is navigated")
+	@Given("^I have browser opened and url is navigated$")
 	public void i_have_browser_opened_and_url_is_navigated() throws Exception 
 	{	/*Various ways of invoking Web Driver
 		method 1*/
@@ -59,8 +59,9 @@ public class SearchStefDefs extends TestBase
 		 initialisation of driver
 		this is loose code so for that i have created one class called 
 		WebDriverManagerSimple which is abstract and encapsulated*/
+		
 		/*WebDriver driver= new ChromeDriver(); 
-		implicitwait
+		//implicitwait
 		driver.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
 		driver.manage().window().maximize();
 		driver.get(server_amazon);*/
@@ -104,6 +105,25 @@ public class SearchStefDefs extends TestBase
 	public void product_list_should_appear_pertaining_to_product_search_as(String productName)
 	{
 		testContextAmazon.getSearchPageObjects().VAlidateProductList(productName);
+	}
+	@When("I click on hamburger menu")
+	public void i_click_on_hamburger_menu() {
+		testContextAmazon.getCmnPageObjects().ClickOnHamburgerMenuButton();
+	}
+
+	@When("I click on hamburger menu with category as {string}")
+	public void i_click_on_hamburger_menu_with_category_as(String category) {
+		testContextAmazon.getCmnPageObjects().ClickOnHamburgerMenuProductCategoryLink(category);
+	}
+
+	@When("I click on hamburger menu with sub category as {string}")
+	public void i_click_on_hamburger_menu_with_sub_category_as(String subCategory) {
+		testContextAmazon.getCmnPageObjects().ClickOnHamburgerMenuProductSubCategoryLink(subCategory);
+	}
+
+	@Then("Search results are displayed for products related to {string}")
+	public void search_results_are_displayed_for_products_related_to(String expectedTitle) throws Exception {
+		testContextAmazon.getCmnPageObjects().validatePageTitleMatch(expectedTitle);
 	}
 	@Before
 	public void Setup(Scenario s) //interface also anative dependancy injection 
