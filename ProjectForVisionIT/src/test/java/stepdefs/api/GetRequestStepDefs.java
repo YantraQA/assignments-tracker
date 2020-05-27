@@ -3,50 +3,31 @@ package stepdefs.api;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.emptyArray;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.everyItem;
 import static org.hamcrest.Matchers.not;
-
-import org.hamcrest.Matcher;
-import org.junit.Test;
-
-import contexts.Testbase;
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
+import context.*;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import io.restassured.matcher.ResponseAwareMatcher;
-import static org.hamcrest.Matchers.*;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 
-
-public class GetRequestStepDefs extends Testbase
-{
+public class GetRequestStepDefs extends TestBase {
+	
 	TestContextAPI testContext;
 	
-	public GetRequestStepDefs(TestContextAPI testContext)
-	{
+	public GetRequestStepDefs(TestContextAPI testContext) {
 		this.testContext = testContext;
 	}
 	
-	
-
-	/*@Before
-	public void SetUp(Scenario s)
-	{this.scn=s;
-		
-	}*/
-	
 	@Given("Go rest API is up and running")
 	public void go_rest_API_is_up_and_running() {
-	    testContext.req_spec= given().relaxedHTTPSValidation().baseUri(server).auth().oauth2(accessToken);
+		testContext.req_spec= given().baseUri(server).auth().oauth2(accessToken);
 	}
 
 	@When("I hit the api with get request and end point as {string}")
-	public void i_hit_the_api_with_get_request_and_end_point_as(String endpoint) {
-		testContext.resp = testContext.req_spec.when().get(endpoint);
-		testContext.scn.write("Response of the rwquest is :" + testContext.resp.asString());
+	public void i_hit_the_api_with_get_request_and_end_point_as(String endPoint) {
+		testContext.resp= testContext.req_spec.when().get(endPoint);
+		testContext.scn.write("Response of the request is: " + testContext.resp.asString() +"<br>" );
+
 	}
 
 	@Then("API should return all the users")
@@ -55,10 +36,11 @@ public class GetRequestStepDefs extends Testbase
 		.statusCode(200)
 		.body("_meta.success", equalTo(true))
 		.body("_meta.code", equalTo(200))
-		.body("_meta.message", equalTo("OK. Everything worked as expected."));
-				
+		.body("_meta.message",equalTo("OK. Everything worked as expected."))
+		.body("result", not(emptyArray()));
+
 	}
-	
+
 	@Then("API should return user details of user id {string}")
 	public void api_should_return_single_user_details(String user_id) {
 		testContext.resp.then()
@@ -120,13 +102,4 @@ public class GetRequestStepDefs extends Testbase
 		.body("result.status", everyItem(equalTo("active")));
 	}
 
-	
-
-	
-	
 }
-	
-	
-
-
-

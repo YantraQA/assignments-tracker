@@ -1,12 +1,22 @@
-package trial.junit.api.gorest;
+package context;
 
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.Random;
 
+import cucumber.api.Scenario;
+import cucumber.api.java.Before;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
 public class TestBase {
 
 
+    protected  String server = LoadProperties().getProperty("url");
+    protected  String accessToken = LoadProperties().getProperty("token");
+    
+    protected String serverUI = LoadProperties().getProperty("url_ui");
+    
 	public Properties LoadProperties() {
 
 		try {
@@ -18,7 +28,6 @@ public class TestBase {
 			System.out.println("File not found exception thrown for config.properties file.");
 			return null;
 		}
-
 
 	}
 	
@@ -50,4 +59,5 @@ public class TestBase {
 		return r.toString(); 
 	} 
 
+	
 }

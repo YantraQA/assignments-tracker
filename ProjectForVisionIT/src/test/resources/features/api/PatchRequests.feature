@@ -1,6 +1,6 @@
-@patch
+@api @patch
 Feature: I am testing patch request for Go Rest API
-@sanity
+
   Scenario: Patch request to update user in the Go Rest DB
     Given Go rest API is up and running
     And I have a new user created in the system

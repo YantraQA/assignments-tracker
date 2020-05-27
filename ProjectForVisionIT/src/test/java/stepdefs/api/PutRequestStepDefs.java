@@ -1,13 +1,13 @@
 package stepdefs.api;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.emptyArray;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
 
-
 import java.util.HashMap;
 
-import contexts.Testbase;
+import context.TestBase;
 import cucumber.api.Scenario;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -16,30 +16,25 @@ import cucumber.api.java.en.When;
 import io.restassured.response.Response;
 import utils.api.CmnApiMethods;
 
-
-public class PutRequestStepDef extends Testbase
-{
-	TestContextAPI testContext;
-	public PutRequestStepDef(TestContextAPI testContext)
-	{
-		this.testContext=testContext;
-	}
+public class PutRequestStepDefs extends TestBase {
 	
 	String email = GetRandomString(10) + "@gmail.com";
 	
-	/*@Before
-	public void SetUp(Scenario s)
-	{
-		this.scn=s;
-	}*/
-	@Given("I have a new user created in the system")
-	public void i_have_a_new_created_in_the_system()
-	{
-		CmnApiMethods cmnApiMethod = new CmnApiMethods();
-		testContext.newUserID = cmnApiMethod.CreateNewUserInGoRestAPI();
-		testContext.scn.write("New user created with id as: " + testContext.newUserID);
+	TestContextAPI testContext;
+	
+	public PutRequestStepDefs(TestContextAPI testContext) {
+		this.testContext = testContext;
 	}
 	
+	@Given("I have a new user created in the system")
+	public void i_have_a_new_user_created_in_the_system() {
+
+		CmnApiMethods cmnApiMethod  = new CmnApiMethods();
+		testContext.newUserID = cmnApiMethod.CreateNewUserInGoRestAPI();
+		testContext.scn.write("New user created with id as: " + testContext.newUserID);
+		
+	}
+
 	@When("I hit the api with put request to update the existing user details")
 	public void i_hit_the_api_with_put_request_to_update_the_existing_user_details() {
 
@@ -54,7 +49,7 @@ public class PutRequestStepDef extends Testbase
 		testContext.req_spec.headers(hm_header).body(body_string);	
 		
 		testContext.scn.write("End Point: " + "/public-api/users/" + testContext.newUserID);
-		testContext.resp = testContext.req_spec.when().put("/public-api/users/" + testContext.newUserID);
+		testContext.resp= testContext.req_spec.when().put("/public-api/users/" + testContext.newUserID);
 		testContext.scn.write("Response Put Request: " + testContext.resp.asString());
 	}
 
@@ -70,7 +65,7 @@ public class PutRequestStepDef extends Testbase
 
 	@Then("get request to the user should return updated information")
 	public void get_request_to_the_user_should_return_updated_information() {
-		Response resp_get = given().relaxedHTTPSValidation()
+		Response resp_get = given()
 				.baseUri(server)
 				.auth().oauth2(accessToken)
 				.when()
@@ -87,10 +82,9 @@ public class PutRequestStepDef extends Testbase
 				.body("result.email", equalTo(email));
 
 	}
-	
-	
-	@When("I hit the api with put request and setting wrong email and gender")
-	public void i_hit_the_api_with_put_request_and_setting_wrong_email_and_gender() {
+
+	@When("I hit the api with put request and setting wrong email")
+	public void i_hit_the_api_with_put_request_and_setting_wrong_email() {
 		HashMap<String,String> hm_header = new HashMap<String,String>();
 		hm_header.put("Content-Type", "application/json");
 
@@ -99,15 +93,13 @@ public class PutRequestStepDef extends Testbase
 				"}";
 		testContext.scn.write("body sent as: " +  body_string);
 		
-		testContext.req_spec.headers(hm_header).body(body_string);
+		testContext.req_spec.headers(hm_header).body(body_string);	
 		
-		testContext.resp = testContext.req_spec.when().relaxedHTTPSValidation().put("/public-api/users/" + testContext.newUserID);
 		testContext.scn.write("End Point: " + "/public-api/users/" + testContext.newUserID);
-		
+		testContext.resp= testContext.req_spec.when().put("/public-api/users/" + testContext.newUserID);
 		testContext.scn.write("Response Put Request: " + testContext.resp.asString());
 	}
 
-	
 	@When("I hit the api with put request to update the incorrect user")
 	public void i_hit_the_api_with_put_request_to_update_the_incorrect_user() {
 		HashMap<String,String> hm_header = new HashMap<String,String>();
@@ -121,9 +113,9 @@ public class PutRequestStepDef extends Testbase
 		testContext.req_spec.headers(hm_header).body(body_string);	
 		
 		testContext.scn.write("End Point: " + "/public-api/users/" + "3535535353553645334543564534");
-		testContext.resp = testContext.req_spec.when().relaxedHTTPSValidation().put("/public-api/users/" + "3535535353553645334543564534");
+		testContext.resp= testContext.req_spec.when().put("/public-api/users/" + "3535535353553645334543564534");
 		testContext.scn.write("Response Put Request: " + testContext.resp.asString());
 	}
-	
-	
+
+
 }

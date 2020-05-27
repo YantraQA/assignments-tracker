@@ -12,48 +12,42 @@ import org.openqa.selenium.chrome.ChromeDriver;
  * WebDriverManagerSingleton browserManager= WebDriverManagerSingleton.getInstanceOfWebDriverManager();
  * driver = browserManager.getDriver();
  */
-
-public class WebDriverManagerSingleton 
-{
-	//Instance of singleton class
+public class WebDriverManagerSingleton {
+	
+	//Instance of Singleton Class
 	private static WebDriverManagerSingleton instanceOfSingletonClass=null;
-	private static WebDriver  driver;
+	private static WebDriver driver;
 	
 	//Private Constructor
-	private WebDriverManagerSingleton()
-	{
+	private WebDriverManagerSingleton() {
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	}
 	
-	//To create instance of class 
-	public static WebDriverManagerSingleton getInstanceOfWebDriverManager()
-	{
-		if(instanceOfSingletonClass==null)
-		{
+	//To create instance of Class
+	public static WebDriverManagerSingleton getInstanceOfWebDriverManager() {
+		if(instanceOfSingletonClass==null) {
 			instanceOfSingletonClass = new WebDriverManagerSingleton();
 		}
 		return instanceOfSingletonClass;
 	}
 	
-	//To get Driver
-	public WebDriver getDriver()
-	{
-		if(driver==null)
-		{
+	//to get Driver
+	public  WebDriver getDriver() {
+		if (driver==null) {
 			driver = new ChromeDriver();
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		}
 		return driver;
 	}
 	
-	//To close driver
-	public void CloseDriver()
-	{
-		if(!(driver==null))
-		{
+	
+	public void CloseDriver() {
+		if (!(driver==null)) {
 			driver.quit();
 			driver = null;
+			
 		}
 	}
+	
 }

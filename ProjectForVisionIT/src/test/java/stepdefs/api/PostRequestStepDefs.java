@@ -9,6 +9,7 @@ import java.util.HashMap;
 
 import org.junit.Assert;
 
+import context.TestBase;
 import cucumber.api.Scenario;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -16,24 +17,21 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
 
+public class PostRequestStepDefs extends TestBase {
 
-
-public class PostRequestStepDefs extends contexts.Testbase 
-{
 	TestContextAPI testContext;
-	public PostRequestStepDefs(TestContextAPI testContext)
-	{
-		this.testContext=testContext;
-	}
-		
 	
-	/*@Before
-	public void SetUp(Scenario s) {
-		this.scn = s;
-	}*/
+	public PostRequestStepDefs(TestContextAPI testContext) {
+		this.testContext = testContext;
+	}
 	
 	String email = GetRandomString(10) + "@gmail.com";
 
+	/*
+	 * ***************************************************************************************
+	 * ***************************GIVEN*******************************************************
+	 * ***************************************************************************************
+	 */
 	
 	@Given("I set header and body to create new user")
 	public void i_set_header_and_body_to_create_new_user() {
@@ -107,14 +105,23 @@ public class PostRequestStepDefs extends contexts.Testbase
 		testContext.req_spec.headers(hm_header).body(body_string);
 	}
 	
-	
+	/*
+	 * ***************************************************************************************
+	 * ***************************WHEN********************************************************
+	 * ***************************************************************************************
+	 */
+
 	@When("I hit the api with post request and end point as {string}")
-	public void i_hit_the_api_with_post_request_and_end_point_as(String endPoint)
-	{
+	public void i_hit_the_api_with_post_request_and_end_point_as(String endPoint) {
 		testContext.resp = testContext.req_spec.when().post(endPoint);
 		testContext.scn.write("response:  " + testContext.resp.asString());
 	}
 
+	/*
+	 * ***************************************************************************************
+	 * ***************************THEN********************************************************
+	 * ***************************************************************************************
+	 */
 	@Then("API returned the error code as {int}")
 	public void api_returned_the_error_code_as(Integer statusCode) {
 		testContext.resp.then().assertThat().body("_meta.code", equalTo(statusCode));
@@ -123,7 +130,7 @@ public class PostRequestStepDefs extends contexts.Testbase
 	@Then("error message displayed as {string}")
 	public void error_message_displayed_as(String msg) {
 		String body_as_string = testContext.resp.asString();
-		Assert.assertTrue("Error Message:" , body_as_string.contains(msg));
+		Assert.assertTrue("Validation failed. Error Message not found." , body_as_string.contains(msg));
 	}
 	
 	@Then("API created a new User in the system")
@@ -145,7 +152,7 @@ public class PostRequestStepDefs extends contexts.Testbase
 	@Then("I can find the new user in the system when i get the user")
 	public void i_can_find_the_new_user_in_the_system_when_i_get_the_user() {
 		String id = testContext.resp.jsonPath().getString("result.id");
-		Response resp_get = given().relaxedHTTPSValidation()
+		Response resp_get = given()
 				.baseUri(server)
 				.auth().oauth2(accessToken)
 				.when()

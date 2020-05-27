@@ -18,9 +18,8 @@ import cucumber.api.junit.Cucumber;
 		strict=false,
 		dryRun=false
 		
+
 		)
-
-
 public class RunTest {
-	
+
 }

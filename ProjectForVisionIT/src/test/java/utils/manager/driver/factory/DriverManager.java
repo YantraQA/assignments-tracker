@@ -4,34 +4,32 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 
-public abstract class DriverManager 
-{
+public abstract class DriverManager {
 	protected WebDriver driver;
 	protected abstract void initDriver();
-	
-	public WebDriver getDriver()
-	{
+
+	public WebDriver getDriver() {
 		initDriver();
 		return driver;
 	}
-	public void quitDriver()
-	{
+
+	public void quitDriver() {
 		driver.quit();
 	}
-	public void closeDriver()
-	{
+	
+	public void closeDriver() {
 		driver.close();
 	}
-	public void navigetToDriver(String url)
-	{
+	
+	public void navigateToDriver(String url) {
 		driver.get(url);
 	}
-	public void maximizeBrowser()
-	{
+	
+	public void maximizeBrowser() {
 		driver.manage().window().maximize();
 	}
-	public void setImplicitWaitTimeOut(int timeInMiliSeconds)
-	{
+	
+	public void setImplicitWaitTimeOut(int timeInMiliSeconds) {
 		driver.manage().timeouts().implicitlyWait(timeInMiliSeconds, TimeUnit.MILLISECONDS);
 	}
 }
